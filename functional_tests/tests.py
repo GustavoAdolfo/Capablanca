@@ -27,7 +27,7 @@ class NewVisitorTest(LiveServerTestCase):
                     raise e
                 time.sleep(0.5)
 
-    def test_can_start_a_list_and_retrive_it_later(self):
+    def test_can_start_a_list_for_one_user(self):
         # Edith ouviu falar de uma nova apliacação online interessate para
         # listas de tarefas. Ela decide verificar sua homepage.
         self.browser.get(self.live_server_url)
@@ -100,7 +100,7 @@ class NewVisitorTest(LiveServerTestCase):
         # Francis obtém seu próprio URL exclusivo
         francis_list_url = self.browser.current_url
         self.assertRegex(francis_list_url, '/lists/.+')
-        self.assertNoEqual(francis_list_url, edith_list_url)
+        self.assertNotEqual(francis_list_url, edith_list_url)
 
         # Novamente, não há nenhum sinal da lista de Edith
         page_text = self.browser.find_element(By.TAG_NAME, 'body').text
