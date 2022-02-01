@@ -6,40 +6,42 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
     <!-- Bootstrap CSS -->
-    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link rel="stylesheet" href="/static/bootstrap/css/bootstrap.min.css">
 
     <title>To-Do Lists</title>
   </head>
   <body>
-    <div.class="container">
-    <div class="row">
-      <div class="col-md-6 col-md-offset-3">
-        <div class="text-center">
-          <h1>{% block header_text %}{% endblock %}</h1>
-    
+    <main class="container">
+      
+      <div class="jumbotron">
+        <div class="row">
+          <div class="col-md-12 text-center">
+            <h1>{% block header_text %}{% endblock %}</h1>
+            
+            <form method="POST" action="{% block form_action %}{% endblock %}">
+              {% csrf_token %}
+              <input
+                type="text"
+                id="id_new_item"
+                name="item_text"
+                placeholder="Enter a to-do item"
+                class="form-control input-lg my-3"
+              />
+              <br/>
+              <input type="submit" value="Add Task" class="btn btn-lg btn-primary"/>
+            </form>
+          </div>
+        </div> 
+      </div>
 
-    <form method="POST" action="{% block form_action %}{% endblock %}">
-			{% csrf_token %}
-			<input
-				type="text"
-				id="id_new_item"
-				name="item_text"
-				placeholder="Enter a to-do item"
-			/>
-			<input type="submit" value="Add Task" />
-		</form>
-  </div>
-</div>
-</div>
-</div>
+      <div class="row">
+        <div class="col-md-12 text-center">
+          {% block table%}
+          {% endblock %}
+        </div>
+      </div>
 
-<div class="row">
-  <div class="col-md-6 col-md-offset-3">
-    {% block table%}
-    {% endblock %}
-  </div>
-</div>
-
+    </main>
     <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
