@@ -11,7 +11,7 @@ class LayoutAndStylingTest(FunctionalTest):
         self.browser.set_window_size(1366, 768)
 
         # Ela percebe que o inputbox está elegantemente centralizada
-        inputbox = self.browser.find_element(By.ID, 'id_new_item')
+        inputbox = self.get_item_input_box()
         self.assertAlmostEqual(
             inputbox.location['x'] + inputbox.size['width'] / 2,
             610,
@@ -22,7 +22,7 @@ class LayoutAndStylingTest(FunctionalTest):
         inputbox.send_keys('testing')
         inputbox.send_keys(Keys.ENTER)
         self.wait_for_row_in_list_table('1: testing')
-        inputbox = self.browser.find_element(By.ID, 'id_new_item')
+        inputbox = self.get_item_input_box()
         self.assertAlmostEqual(
             inputbox.location['x'] + inputbox.size['width'] / 2,
             610,
