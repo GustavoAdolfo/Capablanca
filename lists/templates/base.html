@@ -29,6 +29,9 @@
               />
               <br/>
               <input type="submit" value="Add Task" class="btn btn-lg btn-primary"/>
+              {% if error %}
+                <div class="has-error form-group alert alert-danger">{{ error }}</div>
+              {% endif %}
             </form>
           </div>
         </div> 
