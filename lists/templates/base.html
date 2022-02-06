@@ -20,15 +20,7 @@
             
             <form method="POST" action="{% block form_action %}{% endblock %}">
               {% csrf_token %}
-              <input
-                type="text"
-                id="id_new_item"
-                name="item_text"
-                placeholder="Enter a to-do item"
-                class="form-control input-lg my-3"
-              />
-              <br/>
-              <input type="submit" value="Add Task" class="btn btn-lg btn-primary"/>
+              {{ form.text }}
               {% if error %}
                 <div class="has-error form-group alert alert-danger">{{ error }}</div>
               {% endif %}
